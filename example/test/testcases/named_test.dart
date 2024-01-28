@@ -12,7 +12,7 @@ class NamedTest {
 
 void main() {
   test("constructor with named parameters", () {
-    const namedTest = NamedTestStub();
+    final namedTest = NamedTestStub.stub();
     expect(namedTest.name, "stub");
   });
 }

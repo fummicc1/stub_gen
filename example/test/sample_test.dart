@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 void main() {
   test("make_sample_stub", () {
-    const sample = SampleStub();
+    final sample = SampleStub.stub();
     expect(sample.name, "stub");
   });
 }

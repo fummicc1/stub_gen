@@ -20,8 +20,8 @@ class ChildTarget {
 
 void main() {
   test("", () {
-    final target = TargetStub();
-    expect(target.childTarget.childValue, const ChildTargetStub().childValue);
+    final target = TargetStub.stub();
+    expect(target.childTarget.childValue, ChildTargetStub.stub().childValue);
     expect(target.value, 1);
   });
 }
