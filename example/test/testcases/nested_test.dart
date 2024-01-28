@@ -21,7 +21,7 @@ class ChildTarget {
 void main() {
   test("", () {
     final target = TargetStub();
-    expect(target.childTarget.childValue, ChildTargetStub().childValue);
+    expect(target.childTarget.childValue, const ChildTargetStub().childValue);
     expect(target.value, 1);
   });
 }

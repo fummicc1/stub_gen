@@ -1,5 +1,3 @@
-library stub_kit;
-
 class Stub {
   final int? intDefault;
   final double? doubleDefault;

@@ -7,7 +7,18 @@
 
 # The following line activates a set of recommended lints for Flutter apps,
 # packages, and plugins designed to encourage good coding practices.
-include: package:flutter_lints/flutter.yaml
+# This file configures the analyzer to use the lint rule set from `package:lint`
+
+include: package:lint/strict.yaml
+
+# This file configures the analyzer to use the lint rule set from `package:lint`
+
+# You might want to exclude auto-generated files from dart analysis
+analyzer:
+  exclude:
+    - '**.freezed.dart'
+    - '**.g.dart'
+
 
 linter:
   # The lint rules applied to this project can be customized in the

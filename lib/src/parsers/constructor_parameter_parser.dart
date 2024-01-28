@@ -2,15 +2,17 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:stub_kit/src/parsers/parser.dart';
 
-String traverseDefaultValueFromDartType(
-    {required DartType type, required Map<String, dynamic> defaultValues}) {
+String traverseDefaultValueFromDartType({
+  required DartType type,
+  required Map<String, dynamic> defaultValues,
+}) {
   if (type.isDartCoreInt ||
       type.isDartCoreDouble ||
       type.isDartCoreString ||
       type.isDartCoreBool) {
     final defaultValue = defaultValues[type.toString()];
     if (type.isDartCoreString) {
-      return "\"$defaultValue\"";
+      return '"$defaultValue"';
     }
     return "$defaultValue";
   }
@@ -66,7 +68,9 @@ class ConstructorParameterParser with Parser {
     final type = element.type;
     final isNamed = element.isNamed;
     final value = traverseDefaultValueFromDartType(
-        type: type, defaultValues: defaultValues);
+      type: type,
+      defaultValues: defaultValues,
+    );
 
     if (isNamed) {
       return """

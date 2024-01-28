@@ -13,7 +13,7 @@ class ConstructorParser with Parser {
     final className = classElement.name;
     final parameters = <ConstructorParameterParser>[];
     final isConst = constructorElement.isConst;
-    for (var parameter in constructorElement.parameters) {
+    for (final parameter in constructorElement.parameters) {
       parameters.add(ConstructorParameterParser(parameter));
     }
     return """
