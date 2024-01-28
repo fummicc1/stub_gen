@@ -6,6 +6,11 @@ part of 'simple_test.dart';
 // StubGenerator
 // **************************************************************************
 
-class TargetStub extends Target {
-  TargetStub() : super(1, "stub", 1.0, false);
+extension TargetStub on Target {
+  static Target stub(
+          {int intVariable = 1,
+          String stringVariable = "stub",
+          double doubleVariable = 1.0,
+          bool boolVariable = false}) =>
+      Target(intVariable, stringVariable, doubleVariable, boolVariable);
 }

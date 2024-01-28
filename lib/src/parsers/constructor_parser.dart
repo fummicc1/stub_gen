@@ -11,17 +11,17 @@ class ConstructorParser with Parser {
   @override
   String parse({required Map<String, dynamic> defaultValues}) {
     final className = classElement.name;
+    final constructorName = constructorElement.name;
     final parameters = <ConstructorParameterParser>[];
-    final isConst = constructorElement.isConst;
     for (final parameter in constructorElement.parameters) {
       parameters.add(ConstructorParameterParser(parameter));
     }
     return """
-class ${className}Stub extends $className {
-  ${isConst ? "const" : ""} ${className}Stub() : super(
+  static $className ${constructorName.isEmpty ? "stub" : "${constructorName}Stub"}({
+    ${parameters.map((e) => e.parseForArgument(defaultValues: defaultValues)).where((element) => element.isNotEmpty).join(',\n')}
+  }) => $className${constructorName.isEmpty ? "" : ".$constructorName"}(
     ${parameters.map((e) => e.parse(defaultValues: defaultValues)).join(',\n')}
   );
-}
 """;
   }
 }

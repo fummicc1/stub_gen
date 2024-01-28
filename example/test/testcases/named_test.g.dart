@@ -6,6 +6,6 @@ part of 'named_test.dart';
 // StubGenerator
 // **************************************************************************
 
-class NamedTestStub extends NamedTest {
-  const NamedTestStub() : super(name: "stub");
+extension NamedTestStub on NamedTest {
+  static NamedTest stub({String name = "stub"}) => NamedTest(name: name);
 }
