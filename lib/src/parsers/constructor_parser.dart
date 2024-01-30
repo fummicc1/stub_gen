@@ -12,6 +12,9 @@ class ConstructorParser with Parser {
   String parse({required Map<String, dynamic> defaultValues}) {
     final className = classElement.name;
     final constructorName = constructorElement.name;
+    if (constructorName.startsWith("_")) {
+      return "";
+    }
     final parameters = <ConstructorParameterParser>[];
     for (final parameter in constructorElement.parameters) {
       parameters.add(ConstructorParameterParser(parameter));

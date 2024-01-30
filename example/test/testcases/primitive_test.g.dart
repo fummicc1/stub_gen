@@ -24,6 +24,7 @@ extension BoolTargetStub on BoolTarget {
 }
 
 extension ListTargetStub on ListTarget {
-  static ListTarget stub({List<int> value = const [123456]}) =>
-      ListTarget(value);
+  static ListTarget stub(
+          {List<int> value = const [123456], List<BoolTarget>? boolTargets}) =>
+      ListTarget(value, boolTargets ?? [BoolTargetStub.stub()]);
 }
