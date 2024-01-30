@@ -15,6 +15,7 @@ class StubGenerator extends GeneratorForAnnotation<Stub> {
     if (element is! ClassElement) {
       throw Exception("Not supported element: $element");
     }
+    final className = element.name;
     final stub = annotation.objectValue;
     final defaultValues = {
       "int": stub.getField("intDefault")?.toIntValue() ?? 1,
@@ -28,8 +29,10 @@ class StubGenerator extends GeneratorForAnnotation<Stub> {
         constructorParsers.add(ConstructorParser(element, constructorElement));
       }
     }
-    return constructorParsers
-        .map((e) => e.parse(defaultValues: defaultValues))
-        .join('\n');
+    return """
+extension ${className}Stub on $className {
+  ${constructorParsers.map((e) => e.parse(defaultValues: defaultValues)).join('\n')}
+}
+""";
   }
 }

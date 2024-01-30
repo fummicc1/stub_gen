@@ -6,10 +6,11 @@ part of 'nested_test.dart';
 // StubGenerator
 // **************************************************************************
 
-class TargetStub extends Target {
-  TargetStub() : super(1, ChildTargetStub());
+extension TargetStub on Target {
+  static Target stub({int value = 1, ChildTarget? childTarget}) =>
+      Target(value, childTarget ?? ChildTargetStub.stub());
 }
 
-class ChildTargetStub extends ChildTarget {
-  const ChildTargetStub() : super(1);
+extension ChildTargetStub on ChildTarget {
+  static ChildTarget stub({int childValue = 1}) => ChildTarget(childValue);
 }

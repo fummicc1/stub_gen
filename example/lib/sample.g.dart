@@ -6,6 +6,11 @@ part of 'sample.dart';
 // StubGenerator
 // **************************************************************************
 
-class SampleStub extends Sample {
-  const SampleStub() : super("stub", 10, 1.0, false);
+extension SampleStub on Sample {
+  static Sample stub(
+          {String name = "stub",
+          int age = 10,
+          double height = 1.0,
+          bool isMale = false}) =>
+      Sample(name, age, height, isMale);
 }

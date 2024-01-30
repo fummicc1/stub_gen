@@ -6,22 +6,25 @@ part of 'primitive_test.dart';
 // StubGenerator
 // **************************************************************************
 
-class IntTargetStub extends IntTarget {
-  IntTargetStub() : super(1234);
+extension IntTargetStub on IntTarget {
+  static IntTarget stub({int value = 1234}) => IntTarget(value);
 }
 
-class StringTargetStub extends StringTarget {
-  StringTargetStub() : super("Hello World");
+extension StringTargetStub on StringTarget {
+  static StringTarget stub({String value = "Hello World"}) =>
+      StringTarget(value);
 }
 
-class DoubleTargetStub extends DoubleTarget {
-  DoubleTargetStub() : super(1.0);
+extension DoubleTargetStub on DoubleTarget {
+  static DoubleTarget stub({double value = 1.0}) => DoubleTarget(value);
 }
 
-class BoolTargetStub extends BoolTarget {
-  BoolTargetStub() : super(false);
+extension BoolTargetStub on BoolTarget {
+  static BoolTarget stub({bool value = false}) => BoolTarget(value);
 }
 
-class ListTargetStub extends ListTarget {
-  ListTargetStub() : super([123456], [BoolTargetStub()]);
+extension ListTargetStub on ListTarget {
+  static ListTarget stub(
+          {List<int> value = const [123456], List<BoolTarget>? boolTargets}) =>
+      ListTarget(value, boolTargets ?? [BoolTargetStub.stub()]);
 }

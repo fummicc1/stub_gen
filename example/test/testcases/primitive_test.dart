@@ -36,24 +36,24 @@ class ListTarget {
 
 void main() {
   test("constructor with int", () {
-    final target = IntTargetStub();
+    final target = IntTargetStub.stub();
     expect(target.value, 1234);
   });
   test("constructor with String", () {
-    final target = StringTargetStub();
+    final target = StringTargetStub.stub();
     expect(target.value, "Hello World");
   });
   test("constructor with double", () {
-    final target = DoubleTargetStub();
+    final target = DoubleTargetStub.stub();
     expect(target.value, 1.0);
   });
   test("constructor with bool", () {
-    final target = BoolTargetStub();
+    final target = BoolTargetStub.stub();
     expect(target.value, false);
   });
 
   test("constructor with List<int>", () {
-    final target = ListTargetStub();
+    final target = ListTargetStub.stub();
     expect(target.value, [123456]);
     expect(target.boolTargets.first.value, false);
   });
