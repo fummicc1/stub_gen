@@ -30,7 +30,8 @@ class BoolTarget {
 @Stub(intDefault: 123456)
 class ListTarget {
   List<int> value;
-  ListTarget(this.value);
+  List<BoolTarget> boolTargets;
+  ListTarget(this.value, this.boolTargets);
 }
 
 void main() {
@@ -54,5 +55,6 @@ void main() {
   test("constructor with List<int>", () {
     final target = ListTargetStub();
     expect(target.value, [123456]);
+    expect(target.boolTargets.first.value, false);
   });
 }

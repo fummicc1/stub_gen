@@ -23,5 +23,5 @@ class BoolTargetStub extends BoolTarget {
 }
 
 class ListTargetStub extends ListTarget {
-  ListTargetStub() : super([123456]);
+  ListTargetStub() : super([123456], [BoolTargetStub()]);
 }
