@@ -99,9 +99,7 @@ class ConstructorParameterParser with Parser {
     final resultUsedInArgument = parseForArgument(defaultValues: defaultValues);
 
     if (resultUsedInArgument.isNotEmpty) {
-      final isOptional = result.shouldCoalesceNull;
-      print("$type: $isOptional");
-      if (isOptional) {
+      if (result.shouldCoalesceNull) {
         value = "$name ?? $value";
       } else {
         value = name;
@@ -133,6 +131,9 @@ class ConstructorParameterParser with Parser {
       }
       return "$type $name = $valuePrefix${result.value}";
     }
+    if (type.isNullable) {
+      return "$type $name";
+    }
     return "$type? $name";
   }
 }
@@ -143,5 +144,9 @@ extension DartTypeX on DartType {
         isDartCoreDouble ||
         isDartCoreString ||
         isDartCoreBool;
+  }
+
+  bool get isNullable {
+    return toString().endsWith("?");
   }
 }
