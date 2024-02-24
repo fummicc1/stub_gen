@@ -3,6 +3,8 @@ import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:stub_kit/annotations.dart';
 import 'package:stub_kit/src/parsers/constructor_parser.dart';
+import 'package:stub_kit/src/renderers/class_renderer.dart';
+import 'package:stub_kit/src/renderers/enum_renderer.dart';
 
 // Generate a stub class
 class StubGenerator extends GeneratorForAnnotation<Stub> {
@@ -12,27 +14,18 @@ class StubGenerator extends GeneratorForAnnotation<Stub> {
     ConstantReader annotation,
     BuildStep buildStep,
   ) {
-    if (element is! ClassElement) {
-      throw Exception("Not supported element: $element");
+    if (element is ClassElement) {
+      return const ClassRenderer().render(
+        element: element,
+        annotation: annotation,
+      );
     }
-    final className = element.name;
-    final stub = annotation.objectValue;
-    final defaultValues = {
-      "int": stub.getField("intDefault")?.toIntValue() ?? 1,
-      "double": stub.getField("doubleDefault")?.toDoubleValue() ?? 1.0,
-      "String": stub.getField("stringDefault")?.toStringValue() ?? "stub",
-      "bool": stub.getField("boolDefault")?.toBoolValue() ?? false,
-    };
-    final constructorParsers = <ConstructorParser>[];
-    for (final constructorElement in element.children) {
-      if (constructorElement is ConstructorElement) {
-        constructorParsers.add(ConstructorParser(element, constructorElement));
-      }
+    if (element is EnumElement) {
+      return const EnumRenderer().render(
+        element: element,
+        annotation: annotation,
+      );
     }
-    return """
-extension ${className}Stub on $className {
-  ${constructorParsers.map((e) => e.parse(defaultValues: defaultValues)).join('\n')}
-}
-""";
+    throw Exception("Not supported element: $element");
   }
 }
