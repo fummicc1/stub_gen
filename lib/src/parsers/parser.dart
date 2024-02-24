@@ -1,6 +1,8 @@
+import 'package:stub_kit/src/default_values.dart';
+
 mixin Parser {
-  String parse({required Map<String, dynamic> defaultValues});
-  String parseForArgument({required Map<String, dynamic> defaultValues}) {
+  String parse({required DefaultValues defaultValues});
+  String parseForArgument({required DefaultValues defaultValues}) {
     return "";
   }
 }

@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/element/element.dart';
-import 'package:stub_kit/src/parsers/constructor_parameter_parser.dart';
+import 'package:stub_kit/src/default_values.dart';
+import 'package:stub_kit/src/parsers/parameter_parser.dart';
 import 'package:stub_kit/src/parsers/parser.dart';
 
 class ConstructorParser with Parser {
@@ -9,15 +10,15 @@ class ConstructorParser with Parser {
   ConstructorParser(this.classElement, this.constructorElement);
 
   @override
-  String parse({required Map<String, dynamic> defaultValues}) {
+  String parse({required DefaultValues defaultValues}) {
     final className = classElement.name;
     final constructorName = constructorElement.name;
     if (constructorName.startsWith("_")) {
       return "";
     }
-    final parameters = <ConstructorParameterParser>[];
+    final parameters = <ParameterParser>[];
     for (final parameter in constructorElement.parameters) {
-      parameters.add(ConstructorParameterParser(parameter));
+      parameters.add(ParameterParser(parameter));
     }
     return """
   static $className ${constructorName.isEmpty ? "stub" : "${constructorName}Stub"}({

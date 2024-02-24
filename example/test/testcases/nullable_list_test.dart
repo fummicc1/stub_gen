@@ -18,8 +18,10 @@ class NullableListTarget {
 void main() {
   test("nullable list constructor", () {
     final target = NullableListTargetStub.stub();
-    expect(target.childTarget!.first.childValue,
-        ChildTargetStub.stub().childValue);
+    expect(
+      target.childTarget!.first.childValue,
+      ChildTargetStub.stub().childValue,
+    );
     expect(target.value, 1);
   });
 }
