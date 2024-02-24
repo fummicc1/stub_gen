@@ -8,14 +8,14 @@ enum ExpressionType {
   constExpression,
 }
 
-class ConstructionParameterResult {
+class ParameterParseResult {
   final DartType type;
   final String defaultValue;
   final String? nullCoalescingValue;
   final bool shouldCoalesceNull;
   final ExpressionType expressionType;
 
-  ConstructionParameterResult({
+  ParameterParseResult({
     required this.type,
     required this.defaultValue,
     required this.nullCoalescingValue,
@@ -24,14 +24,14 @@ class ConstructionParameterResult {
   });
 }
 
-ConstructionParameterResult traverseDefaultValueFromDartType({
+ParameterParseResult traverseDefaultValueFromDartType({
   required DartType type,
   required Map<String, dynamic> defaultValues,
 }) {
   final defaultValue = defaultValues[type.toString()];
   if (type.isPrimitive) {
     if (type.isDartCoreString) {
-      return ConstructionParameterResult(
+      return ParameterParseResult(
         type: type,
         defaultValue: defaultValue == null ? "" : '"$defaultValue"',
         nullCoalescingValue: null,
@@ -39,7 +39,7 @@ ConstructionParameterResult traverseDefaultValueFromDartType({
         expressionType: ExpressionType.constExpression,
       );
     }
-    return ConstructionParameterResult(
+    return ParameterParseResult(
       type: type,
       defaultValue: defaultValue.toString(),
       nullCoalescingValue: null,
@@ -59,7 +59,7 @@ ConstructionParameterResult traverseDefaultValueFromDartType({
         final defaultValue = result.defaultValue;
         final nullCoalescingValue = result.nullCoalescingValue;
         final expression = result.expressionType;
-        return ConstructionParameterResult(
+        return ParameterParseResult(
           type: type,
           defaultValue: defaultValue.isNotEmpty ? "[$defaultValue]" : "",
           nullCoalescingValue:
@@ -73,7 +73,7 @@ ConstructionParameterResult traverseDefaultValueFromDartType({
     }
   }
   if (type.isDartCoreMap) {
-    return ConstructionParameterResult(
+    return ParameterParseResult(
       type: type,
       defaultValue: "{}",
       nullCoalescingValue: null,
@@ -81,8 +81,8 @@ ConstructionParameterResult traverseDefaultValueFromDartType({
       expressionType: ExpressionType.constExpression,
     );
   }
-  if (type.toString() == StubbableTypes.dateTime.typeName) {
-    return ConstructionParameterResult(
+  if (type.toString().contains(StubbableTypes.dateTime.typeName)) {
+    return ParameterParseResult(
       type: type,
       defaultValue: """DateTime.parse("$defaultValue")""",
       nullCoalescingValue: null,
@@ -94,7 +94,7 @@ ConstructionParameterResult traverseDefaultValueFromDartType({
   // pattern2: required type name
   if (defaultValues[type.toString()] != null) {
     final defaultValue = defaultValues[type.toString()];
-    return ConstructionParameterResult(
+    return ParameterParseResult(
       type: type,
       defaultValue: defaultValue.toString(),
       nullCoalescingValue: null,
@@ -102,7 +102,7 @@ ConstructionParameterResult traverseDefaultValueFromDartType({
       expressionType: ExpressionType.finalExpression,
     );
   }
-  return ConstructionParameterResult(
+  return ParameterParseResult(
     type: type,
     defaultValue: "",
     nullCoalescingValue: "${type}Stub.stub()",
@@ -111,10 +111,10 @@ ConstructionParameterResult traverseDefaultValueFromDartType({
   );
 }
 
-class ConstructorParameterParser with Parser {
+class ParameterParser with Parser {
   final ParameterElement element;
 
-  ConstructorParameterParser(this.element);
+  ParameterParser(this.element);
 
   @override
   String parse({required Map<String, dynamic> defaultValues}) {

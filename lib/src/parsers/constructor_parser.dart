@@ -1,5 +1,5 @@
 import 'package:analyzer/dart/element/element.dart';
-import 'package:stub_kit/src/parsers/constructor_parameter_parser.dart';
+import 'package:stub_kit/src/parsers/parameter_parser.dart';
 import 'package:stub_kit/src/parsers/parser.dart';
 
 class ConstructorParser with Parser {
@@ -15,9 +15,9 @@ class ConstructorParser with Parser {
     if (constructorName.startsWith("_")) {
       return "";
     }
-    final parameters = <ConstructorParameterParser>[];
+    final parameters = <ParameterParser>[];
     for (final parameter in constructorElement.parameters) {
-      parameters.add(ConstructorParameterParser(parameter));
+      parameters.add(ParameterParser(parameter));
     }
     return """
   static $className ${constructorName.isEmpty ? "stub" : "${constructorName}Stub"}({
