@@ -11,9 +11,17 @@ class ConstructorParser with Parser {
 
   @override
   String parse({required DefaultValues defaultValues}) {
+    final isFreezed = classElement.metadata.any(
+      (e) => e.toSource().contains("freezed"),
+    );
     final className = classElement.name;
     final constructorName = constructorElement.name;
     final isPrivate = constructorName.startsWith("_");
+    // for freezed, there is no way to create a stub for private constructor.
+    // developer uses private constructor for freezed to declare getter field for the class.
+    if (isFreezed && isPrivate) {
+      return "";
+    }
     final parameters = <ParameterParser>[];
     for (final parameter in constructorElement.parameters) {
       parameters.add(ParameterParser(parameter));
@@ -23,11 +31,21 @@ class ConstructorParser with Parser {
     final stubConstructorName = isPrivate || constructorName.isEmpty
         ? "stub"
         : "${constructorName}Stub";
+    final renderForArguments = parameters.map(
+      (e) => e.parseForArgument(defaultValues: defaultValues),
+    );
+    final renderForFactory = parameters.map(
+      (e) => e.parse(defaultValues: defaultValues),
+    );
+    if (renderForArguments.length != parameters.length ||
+        renderForFactory.length != parameters.length) {
+      return "";
+    }
     return """
   static $className $stubConstructorName({
-    ${parameters.map((e) => e.parseForArgument(defaultValues: defaultValues)).where((element) => element.isNotEmpty).join(',\n')}
+    ${renderForArguments.join(',\n')}
   }) => $stubFactory(
-    ${parameters.map((e) => e.parse(defaultValues: defaultValues)).join(',\n')}
+    ${renderForFactory.join(',\n')}
   );
 """;
   }

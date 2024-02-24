@@ -6,7 +6,6 @@ part 'private_constructor_test.g.dart';
 @Stub()
 class ObjectWithPrivateConstructor {
   ObjectWithPrivateConstructor._(this.value);
-
   final int value;
 }
 
