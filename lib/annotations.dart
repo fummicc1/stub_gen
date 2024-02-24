@@ -1,13 +1,9 @@
+import 'package:stub_kit/stubbables.dart';
+
 class Stub {
-  final int? intDefault;
-  final double? doubleDefault;
-  final String? stringDefault;
-  final double? boolDefault;
+  final Map<StubbableTypes, dynamic> defaultValues;
 
   const Stub({
-    this.intDefault,
-    this.doubleDefault,
-    this.stringDefault,
-    this.boolDefault,
+    this.defaultValues = const {},
   });
 }

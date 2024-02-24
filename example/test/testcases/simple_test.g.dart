@@ -12,5 +12,6 @@ extension TargetStub on Target {
           String stringVariable = "stub",
           double doubleVariable = 1.0,
           bool boolVariable = false}) =>
-      Target(intVariable, stringVariable, doubleVariable, boolVariable);
+      Target(intVariable ?? 1, stringVariable ?? "stub", doubleVariable ?? 1.0,
+          boolVariable ?? false);
 }

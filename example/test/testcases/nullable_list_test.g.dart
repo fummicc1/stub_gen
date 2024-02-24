@@ -9,5 +9,5 @@ part of 'nullable_list_test.dart';
 extension NullableListTargetStub on NullableListTarget {
   static NullableListTarget stub(
           {int value = 1, List<ChildTarget>? childTarget}) =>
-      NullableListTarget(value, childTarget ?? [ChildTargetStub.stub()]);
+      NullableListTarget(value ?? 1, childTarget ?? [ChildTargetStub.stub()]);
 }

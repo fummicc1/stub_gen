@@ -1,15 +1,16 @@
 import 'package:stub_kit/annotations.dart';
+import 'package:stub_kit/stubbables.dart';
 import 'package:test/test.dart';
 
 part 'primitive_test.g.dart';
 
-@Stub(intDefault: 1234)
+@Stub(defaultValues: {StubbableTypes.int: 1234})
 class IntTarget {
   int value;
   IntTarget(this.value);
 }
 
-@Stub(stringDefault: "Hello World")
+@Stub(defaultValues: {StubbableTypes.string: "Hello World"})
 class StringTarget {
   String value;
   StringTarget(this.value);
@@ -27,7 +28,7 @@ class BoolTarget {
   BoolTarget(this.value);
 }
 
-@Stub(intDefault: 123456)
+@Stub(defaultValues: {StubbableTypes.int: 123456})
 class ListTarget {
   List<int> value;
   List<BoolTarget> boolTargets;
