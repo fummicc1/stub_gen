@@ -13,5 +13,6 @@ extension DateTimeObjectStub on DateTimeObject {
 
 extension NullableDateTimeObjectStub on NullableDateTimeObject {
   static NullableDateTimeObject stub({DateTime? dateTime}) =>
-      NullableDateTimeObject(dateTime: dateTime ?? DateTime.parse("null"));
+      NullableDateTimeObject(
+          dateTime: dateTime ?? DateTime.parse("2024-01-01T10:00:00Z"));
 }

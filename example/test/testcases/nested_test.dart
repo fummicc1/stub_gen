@@ -4,7 +4,11 @@ import 'package:test/test.dart';
 
 part 'nested_test.g.dart';
 
-@Stub()
+@Stub(
+  defaultValues: {
+    StubbableTypes.int: 100,
+  },
+)
 class Target {
   int value;
   ChildTarget childTarget;
@@ -18,7 +22,7 @@ class Target {
   },
 )
 class ChildTarget {
-  final int? childValue;
+  final int childValue;
 
   const ChildTarget(this.childValue);
 }

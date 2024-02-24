@@ -1,47 +1,21 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
+import 'package:stub_kit/src/default_values.dart';
 import 'package:stub_kit/src/parsers/parser.dart';
-import 'package:stub_kit/stubbables.dart';
-
-enum ExpressionType {
-  finalExpression,
-  constExpression,
-}
-
-class ParameterParseResult {
-  final DartType type;
-  final String defaultValue;
-  final String? nullCoalescingValue;
-  final bool shouldCoalesceNull;
-  final ExpressionType expressionType;
-
-  ParameterParseResult({
-    required this.type,
-    required this.defaultValue,
-    required this.nullCoalescingValue,
-    required this.shouldCoalesceNull,
-    required this.expressionType,
-  });
-}
+import 'package:stub_kit/src/parsers/types/expression_type.dart';
+import 'package:stub_kit/src/parsers/types/parameter_parser_result.dart';
 
 ParameterParseResult traverseDefaultValueFromDartType({
   required DartType type,
-  required Map<String, dynamic> defaultValues,
+  required DefaultValues defaultValues,
 }) {
-  final defaultValue = defaultValues[type.toString()];
+  final defaultValue = defaultValues.findDefaultValue(
+    type,
+  );
   if (type.isPrimitive) {
-    if (type.isDartCoreString) {
-      return ParameterParseResult(
-        type: type,
-        defaultValue: defaultValue == null ? "" : '"$defaultValue"',
-        nullCoalescingValue: null,
-        shouldCoalesceNull: false,
-        expressionType: ExpressionType.constExpression,
-      );
-    }
     return ParameterParseResult(
       type: type,
-      defaultValue: defaultValue.toString(),
+      defaultValue: defaultValue,
       nullCoalescingValue: null,
       shouldCoalesceNull: false,
       expressionType: ExpressionType.constExpression,
@@ -61,7 +35,7 @@ ParameterParseResult traverseDefaultValueFromDartType({
         final expression = result.expressionType;
         return ParameterParseResult(
           type: type,
-          defaultValue: defaultValue.isNotEmpty ? "[$defaultValue]" : "",
+          defaultValue: defaultValue != null ? "[$defaultValue]" : null,
           nullCoalescingValue:
               nullCoalescingValue != null ? "[$nullCoalescingValue]" : null,
           shouldCoalesceNull: nullCoalescingValue != null,
@@ -81,30 +55,19 @@ ParameterParseResult traverseDefaultValueFromDartType({
       expressionType: ExpressionType.constExpression,
     );
   }
-  if (type.toString().contains(StubbableTypes.dateTime.typeName)) {
+  if (defaultValue != null) {
     return ParameterParseResult(
       type: type,
-      defaultValue: """DateTime.parse("$defaultValue")""",
+      defaultValue: defaultValue,
       nullCoalescingValue: null,
       shouldCoalesceNull: false,
       expressionType: ExpressionType.finalExpression,
     );
   }
-  // pattern1: type? name
-  // pattern2: required type name
-  if (defaultValues[type.toString()] != null) {
-    final defaultValue = defaultValues[type.toString()];
-    return ParameterParseResult(
-      type: type,
-      defaultValue: defaultValue.toString(),
-      nullCoalescingValue: null,
-      shouldCoalesceNull: false,
-      expressionType: ExpressionType.finalExpression,
-    );
-  }
+  // if type is not supported, assume that it has own stub.
   return ParameterParseResult(
     type: type,
-    defaultValue: "",
+    defaultValue: null,
     nullCoalescingValue: "${type}Stub.stub()",
     shouldCoalesceNull: true,
     expressionType: ExpressionType.finalExpression,
@@ -117,7 +80,7 @@ class ParameterParser with Parser {
   ParameterParser(this.element);
 
   @override
-  String parse({required Map<String, dynamic> defaultValues}) {
+  String parse({required DefaultValues defaultValues}) {
     final name = element.name;
     final type = element.type;
     final isNamed = element.isNamed;
@@ -132,7 +95,7 @@ class ParameterParser with Parser {
     final resultUsedInArgument = parseForArgument(defaultValues: defaultValues);
 
     if (resultUsedInArgument.isNotEmpty) {
-      if (defaultValue.isNotEmpty) {
+      if (defaultValue != null) {
         value += " ?? $defaultValue";
       }
       if (result.shouldCoalesceNull) {
@@ -148,22 +111,24 @@ class ParameterParser with Parser {
   }
 
   @override
-  String parseForArgument({required Map<String, dynamic> defaultValues}) {
+  String parseForArgument({required DefaultValues defaultValues}) {
     final name = element.name;
     final type = element.type;
     final result = traverseDefaultValueFromDartType(
       type: type,
       defaultValues: defaultValues,
     );
-
-    if (result.expressionType == ExpressionType.constExpression) {
-      final String valuePrefix;
-      if (type.isPrimitive) {
-        valuePrefix = "";
-      } else {
-        valuePrefix = "const ";
+    final defaultValue = result.defaultValue;
+    if (defaultValue != null) {
+      if (result.expressionType == ExpressionType.constExpression) {
+        final String valuePrefix;
+        if (type.isPrimitive) {
+          valuePrefix = "";
+        } else {
+          valuePrefix = "const ";
+        }
+        return "$type $name = $valuePrefix${result.defaultValue}";
       }
-      return "$type $name = $valuePrefix${result.defaultValue}";
     }
     if (type.isNullable) {
       return "$type $name";
@@ -172,7 +137,7 @@ class ParameterParser with Parser {
   }
 }
 
-extension DartTypeX on DartType {
+extension DartTypeExtension on DartType {
   bool get isPrimitive {
     return isDartCoreInt ||
         isDartCoreDouble ||

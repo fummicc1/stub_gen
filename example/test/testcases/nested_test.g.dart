@@ -7,11 +7,11 @@ part of 'nested_test.dart';
 // **************************************************************************
 
 extension TargetStub on Target {
-  static Target stub({int value = 1, ChildTarget? childTarget}) =>
-      Target(value ?? 1, childTarget ?? ChildTargetStub.stub());
+  static Target stub({int value = 100, ChildTarget? childTarget}) =>
+      Target(value ?? 100, childTarget ?? ChildTargetStub.stub());
 }
 
 extension ChildTargetStub on ChildTarget {
-  static ChildTarget stub({int? childValue = null}) =>
-      ChildTarget(childValue ?? null);
+  static ChildTarget stub({int childValue = 100}) =>
+      ChildTarget(childValue ?? 100);
 }

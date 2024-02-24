@@ -39,4 +39,19 @@ extension StubbableTypesExtension on StubbableTypes {
         return object.toStringValue();
     }
   }
+
+  String render(Object value) {
+    switch (this) {
+      case StubbableTypes.int:
+        return value.toString();
+      case StubbableTypes.double:
+        return value.toString();
+      case StubbableTypes.string:
+        return '"$value"';
+      case StubbableTypes.bool:
+        return value.toString();
+      case StubbableTypes.dateTime:
+        return 'DateTime.parse("$value")';
+    }
+  }
 }
