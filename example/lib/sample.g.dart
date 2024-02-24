@@ -12,5 +12,5 @@ extension SampleStub on Sample {
           int age = 10,
           double height = 1.0,
           bool isMale = false}) =>
-      Sample(name, age, height, isMale);
+      Sample(name ?? "stub", age ?? 10, height ?? 1.0, isMale ?? false);
 }

@@ -29,8 +29,11 @@ extension FreezedTargetStub on FreezedTarget {
           {String owner = "stub",
           String name = "stub",
           String content = "stub"}) =>
-      FreezedTarget(owner: owner, name: name, content: content);
+      FreezedTarget(
+          owner: owner ?? "stub",
+          name: name ?? "stub",
+          content: content ?? "stub");
 
   static FreezedTarget fromJsonStub({Map<String, dynamic> json = const {}}) =>
-      FreezedTarget.fromJson(json);
+      FreezedTarget.fromJson(json ?? {});
 }

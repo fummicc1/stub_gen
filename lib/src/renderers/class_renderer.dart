@@ -8,15 +8,10 @@ class ClassRenderer {
   String render({
     required ClassElement element,
     required ConstantReader annotation,
+    required Map<String, Object> defaultValues,
   }) {
     final className = element.name;
-    final stub = annotation.objectValue;
-    final defaultValues = {
-      "int": stub.getField("intDefault")?.toIntValue() ?? 1,
-      "double": stub.getField("doubleDefault")?.toDoubleValue() ?? 1.0,
-      "String": stub.getField("stringDefault")?.toStringValue() ?? "stub",
-      "bool": stub.getField("boolDefault")?.toBoolValue() ?? false,
-    };
+    print("defaultValues: $defaultValues");
     final constructorParsers = <ConstructorParser>[];
     for (final constructorElement in element.children) {
       if (constructorElement is ConstructorElement) {

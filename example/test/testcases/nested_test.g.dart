@@ -8,9 +8,9 @@ part of 'nested_test.dart';
 
 extension TargetStub on Target {
   static Target stub({int value = 1, ChildTarget? childTarget}) =>
-      Target(value, childTarget ?? ChildTargetStub.stub());
+      Target(value ?? 1, childTarget ?? ChildTargetStub.stub());
 }
 
 extension ChildTargetStub on ChildTarget {
-  static ChildTarget stub({int childValue = 1}) => ChildTarget(childValue);
+  static ChildTarget stub({int childValue = 1}) => ChildTarget(childValue ?? 1);
 }

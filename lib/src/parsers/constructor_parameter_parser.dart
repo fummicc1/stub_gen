@@ -1,6 +1,7 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:stub_kit/src/parsers/parser.dart';
+import 'package:stub_kit/stubbables.dart';
 
 enum ExpressionType {
   finalExpression,
@@ -9,13 +10,15 @@ enum ExpressionType {
 
 class ConstructionParameterResult {
   final DartType type;
-  final String value;
+  final String defaultValue;
+  final String? nullCoalescingValue;
   final bool shouldCoalesceNull;
   final ExpressionType expressionType;
 
   ConstructionParameterResult({
     required this.type,
-    required this.value,
+    required this.defaultValue,
+    required this.nullCoalescingValue,
     required this.shouldCoalesceNull,
     required this.expressionType,
   });
@@ -25,19 +28,21 @@ ConstructionParameterResult traverseDefaultValueFromDartType({
   required DartType type,
   required Map<String, dynamic> defaultValues,
 }) {
+  final defaultValue = defaultValues[type.toString()];
   if (type.isPrimitive) {
-    final defaultValue = defaultValues[type.toString()];
     if (type.isDartCoreString) {
       return ConstructionParameterResult(
         type: type,
-        value: defaultValue == null ? "" : '"$defaultValue"',
+        defaultValue: defaultValue == null ? "" : '"$defaultValue"',
+        nullCoalescingValue: null,
         shouldCoalesceNull: false,
         expressionType: ExpressionType.constExpression,
       );
     }
     return ConstructionParameterResult(
       type: type,
-      value: defaultValue.toString(),
+      defaultValue: defaultValue.toString(),
+      nullCoalescingValue: null,
       shouldCoalesceNull: false,
       expressionType: ExpressionType.constExpression,
     );
@@ -51,12 +56,15 @@ ConstructionParameterResult traverseDefaultValueFromDartType({
           type: typeArgument,
           defaultValues: defaultValues,
         );
-        final value = result.value;
+        final defaultValue = result.defaultValue;
+        final nullCoalescingValue = result.nullCoalescingValue;
         final expression = result.expressionType;
         return ConstructionParameterResult(
           type: type,
-          value: "[$value]",
-          shouldCoalesceNull: result.shouldCoalesceNull,
+          defaultValue: defaultValue.isNotEmpty ? "[$defaultValue]" : "",
+          nullCoalescingValue:
+              nullCoalescingValue != null ? "[$nullCoalescingValue]" : null,
+          shouldCoalesceNull: nullCoalescingValue != null,
           expressionType: expression,
         );
       }
@@ -67,14 +75,37 @@ ConstructionParameterResult traverseDefaultValueFromDartType({
   if (type.isDartCoreMap) {
     return ConstructionParameterResult(
       type: type,
-      value: "{}",
+      defaultValue: "{}",
+      nullCoalescingValue: null,
       shouldCoalesceNull: false,
       expressionType: ExpressionType.constExpression,
     );
   }
+  if (type.toString() == StubbableTypes.dateTime.typeName) {
+    return ConstructionParameterResult(
+      type: type,
+      defaultValue: """DateTime.parse("$defaultValue")""",
+      nullCoalescingValue: null,
+      shouldCoalesceNull: false,
+      expressionType: ExpressionType.finalExpression,
+    );
+  }
+  // pattern1: type? name
+  // pattern2: required type name
+  if (defaultValues[type.toString()] != null) {
+    final defaultValue = defaultValues[type.toString()];
+    return ConstructionParameterResult(
+      type: type,
+      defaultValue: defaultValue.toString(),
+      nullCoalescingValue: null,
+      shouldCoalesceNull: false,
+      expressionType: ExpressionType.finalExpression,
+    );
+  }
   return ConstructionParameterResult(
     type: type,
-    value: "${type}Stub.stub()",
+    defaultValue: "",
+    nullCoalescingValue: "${type}Stub.stub()",
     shouldCoalesceNull: true,
     expressionType: ExpressionType.finalExpression,
   );
@@ -94,15 +125,18 @@ class ConstructorParameterParser with Parser {
       type: type,
       defaultValues: defaultValues,
     );
-    var value = result.value;
+    final defaultValue = result.defaultValue;
+    final nullCoalescingValue = result.nullCoalescingValue;
+    var value = name;
 
     final resultUsedInArgument = parseForArgument(defaultValues: defaultValues);
 
     if (resultUsedInArgument.isNotEmpty) {
+      if (defaultValue.isNotEmpty) {
+        value += " ?? $defaultValue";
+      }
       if (result.shouldCoalesceNull) {
-        value = "$name ?? $value";
-      } else {
-        value = name;
+        value += " ?? $nullCoalescingValue";
       }
     }
 
@@ -129,7 +163,7 @@ class ConstructorParameterParser with Parser {
       } else {
         valuePrefix = "const ";
       }
-      return "$type $name = $valuePrefix${result.value}";
+      return "$type $name = $valuePrefix${result.defaultValue}";
     }
     if (type.isNullable) {
       return "$type $name";

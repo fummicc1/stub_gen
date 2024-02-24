@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'named_test.dart';
+part of 'datetime_test.dart';
 
 // **************************************************************************
 // StubGenerator
 // **************************************************************************
 
-extension NamedTestStub on NamedTest {
-  static NamedTest stub({String name = "stub"}) =>
-      NamedTest(name: name ?? "stub");
+extension DateTimeObjectStub on DateTimeObject {
+  static DateTimeObject stub({DateTime? dateTime}) => DateTimeObject(
+      dateTime: dateTime ?? DateTime.parse("2022-01-01T00:00:00Z"));
 }

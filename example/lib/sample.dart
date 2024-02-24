@@ -1,8 +1,9 @@
 import 'package:stub_kit/annotations.dart';
+import 'package:stub_kit/stubbables.dart';
 
 part 'sample.g.dart';
 
-@Stub(intDefault: 10)
+@Stub(defaultValues: {StubbableTypes.int: 10})
 class Sample {
   final String name;
   final int age;
