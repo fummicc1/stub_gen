@@ -1,4 +1,5 @@
 import 'package:stub_kit/annotations.dart';
+import 'package:stub_kit/stubbables.dart';
 import 'package:test/test.dart';
 
 part 'nested_test.g.dart';
@@ -11,9 +12,13 @@ class Target {
   Target(this.value, this.childTarget);
 }
 
-@Stub()
+@Stub(
+  defaultValues: {
+    StubbableTypes.int: 100,
+  },
+)
 class ChildTarget {
-  final int childValue;
+  final int? childValue;
 
   const ChildTarget(this.childValue);
 }
@@ -22,6 +27,6 @@ void main() {
   test("nested object constructor", () {
     final target = TargetStub.stub();
     expect(target.childTarget.childValue, ChildTargetStub.stub().childValue);
-    expect(target.value, 1);
+    expect(target.value, 100);
   });
 }

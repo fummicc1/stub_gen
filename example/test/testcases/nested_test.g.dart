@@ -12,5 +12,6 @@ extension TargetStub on Target {
 }
 
 extension ChildTargetStub on ChildTarget {
-  static ChildTarget stub({int childValue = 1}) => ChildTarget(childValue ?? 1);
+  static ChildTarget stub({int? childValue = null}) =>
+      ChildTarget(childValue ?? null);
 }
