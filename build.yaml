@@ -1,6 +1,6 @@
 # Read about `build.yaml` at https://pub.dev/packages/build_config
 builders:
-  make_stub:
+  stub_gen:
     import: "package:stub_gen/builder.dart"
     builder_factories: ["stubBuilder"]
     build_extensions: { ".dart": [".stub.dart"] }

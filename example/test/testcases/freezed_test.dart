@@ -5,6 +5,7 @@ import 'package:stub_gen/annotations.dart';
 import 'package:test/test.dart';
 
 part 'freezed_test.freezed.dart';
+part 'freezed_test.g.dart';
 part 'freezed_test.stub.dart';
 
 @StubGen()
