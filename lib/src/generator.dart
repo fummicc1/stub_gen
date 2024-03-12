@@ -8,7 +8,7 @@ import 'package:stub_gen/src/renderers/class_renderer.dart';
 import 'package:stub_gen/src/renderers/enum_renderer.dart';
 
 // Generate a stub class
-class StubGenerator extends GeneratorForAnnotation<Stub> {
+class StubGenerator extends GeneratorForAnnotation<StubGen> {
   @override
   String generateForAnnotatedElement(
     Element element,

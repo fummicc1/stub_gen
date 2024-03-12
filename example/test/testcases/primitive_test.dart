@@ -4,31 +4,31 @@ import 'package:test/test.dart';
 
 part 'primitive_test.g.dart';
 
-@Stub(defaultValues: {StubbableTypes.int: 1234})
+@StubGen(defaultValues: {StubbableTypes.int: 1234})
 class IntTarget {
   int value;
   IntTarget(this.value);
 }
 
-@Stub(defaultValues: {StubbableTypes.string: "Hello World"})
+@StubGen(defaultValues: {StubbableTypes.string: "Hello World"})
 class StringTarget {
   String value;
   StringTarget(this.value);
 }
 
-@Stub()
+@StubGen()
 class DoubleTarget {
   double value;
   DoubleTarget(this.value);
 }
 
-@Stub()
+@StubGen()
 class BoolTarget {
   bool value;
   BoolTarget(this.value);
 }
 
-@Stub(defaultValues: {StubbableTypes.int: 123456})
+@StubGen(defaultValues: {StubbableTypes.int: 123456})
 class ListTarget {
   List<int> value;
   List<BoolTarget> boolTargets;

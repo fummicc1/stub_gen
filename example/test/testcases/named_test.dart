@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 part 'named_test.g.dart';
 
-@Stub()
+@StubGen()
 class NamedTest {
   final String name;
 

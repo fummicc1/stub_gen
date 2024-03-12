@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 part 'simple_test.g.dart';
 
-@Stub()
+@StubGen()
 class Target {
   int intVariable;
   String stringVariable;

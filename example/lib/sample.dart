@@ -3,7 +3,7 @@ import 'package:stub_gen/stubbables.dart';
 
 part 'sample.g.dart';
 
-@Stub(defaultValues: {StubbableTypes.int: 10})
+@StubGen(defaultValues: {StubbableTypes.int: 10})
 class Sample {
   final String name;
   final int age;

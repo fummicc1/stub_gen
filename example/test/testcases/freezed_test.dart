@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 part 'freezed_test.freezed.dart';
 part 'freezed_test.g.dart';
 
-@Stub()
+@StubGen()
 @freezed
 class FreezedTarget with _$FreezedTarget {
   factory FreezedTarget({

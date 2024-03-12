@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 part 'freezed_with_private_constructor_test.freezed.dart';
 part 'freezed_with_private_constructor_test.g.dart';
 
-@Stub(defaultValues: {StubbableTypes.int: 100})
+@StubGen(defaultValues: {StubbableTypes.int: 100})
 @freezed
 class FreezedWithPrivateConstructor with _$FreezedWithPrivateConstructor {
   factory FreezedWithPrivateConstructor({

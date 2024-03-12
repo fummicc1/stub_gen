@@ -4,14 +4,14 @@ import 'package:test/test.dart';
 
 part 'datetime_test.g.dart';
 
-@Stub(defaultValues: {StubbableTypes.dateTime: '2022-01-01T00:00:00Z'})
+@StubGen(defaultValues: {StubbableTypes.dateTime: '2022-01-01T00:00:00Z'})
 class DateTimeObject {
   final DateTime dateTime;
 
   const DateTimeObject({required this.dateTime});
 }
 
-@Stub(defaultValues: {StubbableTypes.dateTime: '2024-01-01T10:00:00Z'})
+@StubGen(defaultValues: {StubbableTypes.dateTime: '2024-01-01T10:00:00Z'})
 class NullableDateTimeObject {
   final DateTime? dateTime;
 

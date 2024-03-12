@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 part 'enum_test.g.dart';
 
-@Stub()
+@StubGen()
 enum Color { red, green, blue }
 
 void main() {

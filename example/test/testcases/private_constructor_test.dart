@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 part 'private_constructor_test.g.dart';
 
-@Stub()
+@StubGen()
 class ObjectWithPrivateConstructor {
   ObjectWithPrivateConstructor._(this.value);
   final int value;

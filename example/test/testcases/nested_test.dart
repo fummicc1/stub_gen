@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 part 'nested_test.g.dart';
 
-@Stub(
+@StubGen(
   defaultValues: {
     StubbableTypes.int: 100,
   },
@@ -16,7 +16,7 @@ class Target {
   Target(this.value, this.childTarget);
 }
 
-@Stub(
+@StubGen(
   defaultValues: {
     StubbableTypes.int: 100,
   },

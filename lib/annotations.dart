@@ -1,9 +1,9 @@
 import 'package:stub_gen/stubbables.dart';
 
-class Stub {
+class StubGen {
   final Map<StubbableTypes, dynamic> defaultValues;
 
-  const Stub({
+  const StubGen({
     this.defaultValues = const {},
   });
 }

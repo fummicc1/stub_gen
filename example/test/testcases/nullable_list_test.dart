@@ -7,7 +7,7 @@ import 'nested_test.dart';
 
 part 'nullable_list_test.g.dart';
 
-@Stub()
+@StubGen()
 class NullableListTarget {
   int value;
   List<ChildTarget>? childTarget;
