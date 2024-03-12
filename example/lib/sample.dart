@@ -1,7 +1,7 @@
 import 'package:stub_gen/annotations.dart';
 import 'package:stub_gen/stubbables.dart';
 
-part 'sample.g.dart';
+part 'sample.stub.dart';
 
 @StubGen(defaultValues: {StubbableTypes.int: 10})
 class Sample {

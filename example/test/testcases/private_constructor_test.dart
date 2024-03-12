@@ -1,7 +1,7 @@
 import 'package:stub_gen/annotations.dart';
 import 'package:test/test.dart';
 
-part 'private_constructor_test.g.dart';
+part 'private_constructor_test.stub.dart';
 
 @StubGen()
 class ObjectWithPrivateConstructor {

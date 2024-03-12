@@ -18,6 +18,7 @@ analyzer:
   exclude:
     - '**.freezed.dart'
     - '**.g.dart'
+    - '**.stub.dart'
 
 
 linter:

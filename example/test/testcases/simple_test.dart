@@ -1,7 +1,7 @@
 import 'package:stub_gen/annotations.dart';
 import 'package:test/test.dart';
 
-part 'simple_test.g.dart';
+part 'simple_test.stub.dart';
 
 @StubGen()
 class Target {

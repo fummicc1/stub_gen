@@ -19,21 +19,3 @@ Map<String, dynamic> _$$FreezedTargetImplToJson(_$FreezedTargetImpl instance) =>
       'name': instance.name,
       'content': instance.content,
     };
-
-// **************************************************************************
-// StubGenerator
-// **************************************************************************
-
-extension FreezedTargetStub on FreezedTarget {
-  static FreezedTarget stub(
-          {String owner = "stub",
-          String name = "stub",
-          String content = "stub"}) =>
-      FreezedTarget(
-          owner: owner ?? "stub",
-          name: name ?? "stub",
-          content: content ?? "stub");
-
-  static FreezedTarget fromJsonStub({Map<String, dynamic> json = const {}}) =>
-      FreezedTarget.fromJson(json ?? {});
-}
