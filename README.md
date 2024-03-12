@@ -7,7 +7,7 @@ This can facilitate you to write a unit test for a model logic.
 
 - Create `.stub.dart` file where stub method is written.
 - Available with `freezed` annotation class.
-- Custom specific member with arbitrary value via named parameter.
+- Able to insert arbitrary value to specific member via named parameter.
 
 ## Installation
 
