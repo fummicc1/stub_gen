@@ -16,4 +16,8 @@ class Sample {
     this.height,
     this.isMale,
   );
+
+  String get initial {
+    return name[0].toUpperCase();
+  }
 }
