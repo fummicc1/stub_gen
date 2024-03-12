@@ -1,9 +1,9 @@
-name: stub_kit
+name: stub_gen
 description: A new Flutter package project.
 version: 0.0.1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   analyzer: ^6.2.0

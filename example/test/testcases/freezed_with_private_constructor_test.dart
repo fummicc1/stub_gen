@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:stub_kit/annotations.dart';
-import 'package:stub_kit/stubbables.dart';
+import 'package:stub_gen/annotations.dart';
+import 'package:stub_gen/stubbables.dart';
 import 'package:test/test.dart';
 
 part 'freezed_with_private_constructor_test.freezed.dart';

@@ -465,7 +465,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  stub_kit:
+  stub_gen:
     dependency: "direct main"
     description:
       path: ".."

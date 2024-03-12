@@ -1,7 +1,7 @@
 // ignore_for_file: unreachable_from_main
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:stub_kit/annotations.dart';
+import 'package:stub_gen/annotations.dart';
 import 'package:test/test.dart';
 
 part 'freezed_test.freezed.dart';

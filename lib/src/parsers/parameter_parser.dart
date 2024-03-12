@@ -1,9 +1,9 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
-import 'package:stub_kit/src/default_values.dart';
-import 'package:stub_kit/src/parsers/parser.dart';
-import 'package:stub_kit/src/parsers/types/expression_type.dart';
-import 'package:stub_kit/src/parsers/types/parameter_parser_result.dart';
+import 'package:stub_gen/src/default_values.dart';
+import 'package:stub_gen/src/parsers/parser.dart';
+import 'package:stub_gen/src/parsers/types/expression_type.dart';
+import 'package:stub_gen/src/parsers/types/parameter_parser_result.dart';
 
 ParameterParseResult traverseDefaultValueFromDartType({
   required DartType type,

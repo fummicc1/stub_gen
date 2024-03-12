@@ -1,6 +1,6 @@
 // ignore_for_file: unreachable_from_main
 
-import 'package:stub_kit/annotations.dart';
+import 'package:stub_gen/annotations.dart';
 import 'package:test/test.dart';
 
 import 'nested_test.dart';

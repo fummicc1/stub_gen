@@ -1,5 +1,5 @@
-import 'package:stub_kit/annotations.dart';
-import 'package:stub_kit/stubbables.dart';
+import 'package:stub_gen/annotations.dart';
+import 'package:stub_gen/stubbables.dart';
 import 'package:test/test.dart';
 
 part 'primitive_test.g.dart';

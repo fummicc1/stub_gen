@@ -1,4 +1,4 @@
-import 'package:stub_kit/stubbables.dart';
+import 'package:stub_gen/stubbables.dart';
 
 class Stub {
   final Map<StubbableTypes, dynamic> defaultValues;

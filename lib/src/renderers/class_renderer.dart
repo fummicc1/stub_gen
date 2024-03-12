@@ -1,7 +1,7 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:stub_kit/src/default_values.dart';
-import 'package:stub_kit/src/parsers/constructor_parser.dart';
+import 'package:stub_gen/src/default_values.dart';
+import 'package:stub_gen/src/parsers/constructor_parser.dart';
 
 class ClassRenderer {
   const ClassRenderer();
