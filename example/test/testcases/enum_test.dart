@@ -1,7 +1,7 @@
 import 'package:stub_gen/annotations.dart';
 import 'package:test/test.dart';
 
-part 'enum_test.g.dart';
+part 'enum_test.stub.dart';
 
 @StubGen()
 enum Color { red, green, blue }

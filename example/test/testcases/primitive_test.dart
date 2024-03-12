@@ -2,7 +2,7 @@ import 'package:stub_gen/annotations.dart';
 import 'package:stub_gen/stubbables.dart';
 import 'package:test/test.dart';
 
-part 'primitive_test.g.dart';
+part 'primitive_test.stub.dart';
 
 @StubGen(defaultValues: {StubbableTypes.int: 1234})
 class IntTarget {

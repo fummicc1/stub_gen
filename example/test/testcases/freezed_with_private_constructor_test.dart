@@ -4,7 +4,7 @@ import 'package:stub_gen/stubbables.dart';
 import 'package:test/test.dart';
 
 part 'freezed_with_private_constructor_test.freezed.dart';
-part 'freezed_with_private_constructor_test.g.dart';
+part 'freezed_with_private_constructor_test.stub.dart';
 
 @StubGen(defaultValues: {StubbableTypes.int: 100})
 @freezed

@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 
 import 'nested_test.dart';
 
-part 'nullable_list_test.g.dart';
+part 'nullable_list_test.stub.dart';
 
 @StubGen()
 class NullableListTarget {

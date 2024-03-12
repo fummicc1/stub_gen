@@ -2,7 +2,7 @@ import 'package:stub_gen/annotations.dart';
 import 'package:stub_gen/stubbables.dart';
 import 'package:test/test.dart';
 
-part 'nested_test.g.dart';
+part 'nested_test.stub.dart';
 
 @StubGen(
   defaultValues: {

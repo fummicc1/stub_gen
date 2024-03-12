@@ -2,7 +2,7 @@ import 'package:stub_gen/annotations.dart';
 import 'package:stub_gen/stubbables.dart';
 import 'package:test/test.dart';
 
-part 'datetime_test.g.dart';
+part 'datetime_test.stub.dart';
 
 @StubGen(defaultValues: {StubbableTypes.dateTime: '2022-01-01T00:00:00Z'})
 class DateTimeObject {
