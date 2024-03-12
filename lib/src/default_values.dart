@@ -1,6 +1,6 @@
 import 'package:analyzer/dart/constant/value.dart';
 import 'package:analyzer/dart/element/type.dart';
-import 'package:stub_kit/stubbables.dart';
+import 'package:stub_gen/stubbables.dart';
 
 class DefaultValues {
   final Map<String, dynamic> _defaultValues = {};

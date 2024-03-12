@@ -1,9 +1,9 @@
-import 'package:stub_kit/annotations.dart';
-import 'package:stub_kit/stubbables.dart';
+import 'package:stub_gen/annotations.dart';
+import 'package:stub_gen/stubbables.dart';
 
 part 'sample.g.dart';
 
-@Stub(defaultValues: {StubbableTypes.int: 10})
+@StubGen(defaultValues: {StubbableTypes.int: 10})
 class Sample {
   final String name;
   final int age;

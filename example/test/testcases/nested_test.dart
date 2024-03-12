@@ -1,10 +1,10 @@
-import 'package:stub_kit/annotations.dart';
-import 'package:stub_kit/stubbables.dart';
+import 'package:stub_gen/annotations.dart';
+import 'package:stub_gen/stubbables.dart';
 import 'package:test/test.dart';
 
 part 'nested_test.g.dart';
 
-@Stub(
+@StubGen(
   defaultValues: {
     StubbableTypes.int: 100,
   },
@@ -16,7 +16,7 @@ class Target {
   Target(this.value, this.childTarget);
 }
 
-@Stub(
+@StubGen(
   defaultValues: {
     StubbableTypes.int: 100,
   },

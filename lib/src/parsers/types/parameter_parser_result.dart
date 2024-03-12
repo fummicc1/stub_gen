@@ -1,5 +1,5 @@
 import 'package:analyzer/dart/element/type.dart';
-import 'package:stub_kit/src/parsers/types/expression_type.dart';
+import 'package:stub_gen/src/parsers/types/expression_type.dart';
 
 class ParameterParseResult {
   final DartType type;

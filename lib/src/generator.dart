@@ -2,13 +2,13 @@ import 'package:analyzer/dart/constant/value.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:stub_kit/annotations.dart';
-import 'package:stub_kit/src/default_values.dart';
-import 'package:stub_kit/src/renderers/class_renderer.dart';
-import 'package:stub_kit/src/renderers/enum_renderer.dart';
+import 'package:stub_gen/annotations.dart';
+import 'package:stub_gen/src/default_values.dart';
+import 'package:stub_gen/src/renderers/class_renderer.dart';
+import 'package:stub_gen/src/renderers/enum_renderer.dart';
 
 // Generate a stub class
-class StubGenerator extends GeneratorForAnnotation<Stub> {
+class StubGenerator extends GeneratorForAnnotation<StubGen> {
   @override
   String generateForAnnotatedElement(
     Element element,
