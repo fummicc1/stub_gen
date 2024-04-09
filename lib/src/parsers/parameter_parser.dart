@@ -68,7 +68,8 @@ ParameterParseResult traverseDefaultValueFromDartType({
   return ParameterParseResult(
     type: type,
     defaultValue: null,
-    nullCoalescingValue: "${type}Stub.stub()",
+    nullCoalescingValue:
+        "${type.getDisplayString(withNullability: false)}Stub.stub()",
     shouldCoalesceNull: true,
     expressionType: ExpressionType.finalExpression,
   );
