@@ -1,9 +1,16 @@
 {
-  "cSpell.words": ["datetime", "fummicc", "Hoge", "Stubbable", "stubbables"],
+  "cSpell.words": [
+    "datetime",
+    "fummicc",
+    "Hoge",
+    "Stubbable",
+    "stubbables"
+  ],
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
     "*.dart": "$(capture).stub.dart, $(capture).g.dart, $(capture).freezed.dart"
   },
   "editor.formatOnSave": true,
+  "dart.flutterSdkPath": ".fvm/versions/3.19.4"
 }
