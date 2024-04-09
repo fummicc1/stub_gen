@@ -17,7 +17,7 @@ class ConstructorParser with Parser {
     final className = classElement.name;
     final constructorName = constructorElement.name;
     final isPrivate = constructorName.startsWith("_");
-    // for freezed, there is no way to create a stub for private constructor.
+    // as for freezed, there is no way to create a stub for private constructor.
     // developer uses private constructor for freezed to declare getter field for the class.
     if (isFreezed && isPrivate) {
       return "";
