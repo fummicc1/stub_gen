@@ -7,19 +7,11 @@ part of 'named_nullable_parameter_test.dart';
 // **************************************************************************
 
 extension CustomClassStub on CustomClass {
-    static CustomClass stub({
-    String? name = "stub"
-  }) => CustomClass(
-    name: name ?? "stub"
-  );
-
+  static CustomClass stub({String? name = "stub"}) =>
+      CustomClass(name: name ?? "stub");
 }
 
 extension MainClassStub on MainClass {
-    static MainClass stub({
-    CustomClass? customClass
-  }) => MainClass(
-    customClass: customClass ?? CustomClass?Stub.stub()
-  );
-
+  static MainClass stub({CustomClass? customClass}) =>
+      MainClass(customClass: customClass ?? CustomClassStub.stub());
 }
