@@ -1,28 +1,27 @@
 # stub_gen
 
-`stub_gen` is a dart package that generates stub of any class by using `build`.
-This can facilitate you to write a unit test for a model logic.
+`stub_gen` is a Dart package that generates stubs using the `build` package. This can facilitate writing unit tests for model logic.
 
 ## Features
 
-- Create `.stub.dart` file where stub method is written.
-- Available with `freezed` annotation class.
-- Able to insert arbitrary value to specific member via named parameter.
+- Creates a `.stub.dart` file where the stub method is written.
+- Compatible with classes annotated with `freezed`.
+- Allows insertion of arbitrary values into specific members via named parameters.
 
 ## Installation
 
-add the following to `pubspec.yaml`
+Add the following to your `pubspec.yaml`:
 
 ```yaml
 stub_gen:
   git:
     url: https://github.com/fummicc1/stub_gen
-    ref: 0.0.2
+    ref: 0.0.3
 ```
 
 ## Usage
 
-1. Create model class annotated with `StubGen`
+1. Create a model class annotated with `StubGen`:
 
 ```dart
 // sample.dart
@@ -46,25 +45,24 @@ class Sample {
 }
 ```
 
-StubGen has `defaultValues` parameter so that you can modify default value of `StubbableTypes`.
+`StubGen` has a `defaultValues` parameter that allows you to modify the default values of `StubbableTypes`.
 
-2. Run build_runner to generate stub codes.
+2. Run `build_runner` to generate the stub code:
 
 ```sh
 dart run build_runner build
 ```
 
-3. Write a unit test
+3. Write a unit test:
 
 ```dart
 import 'package:example/sample.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test("make_sample_stub", () {
+  test("Initial should be capitalized", () {
     final sample = SampleStub.stub(name: 'fummicc1');
     expect(sample.initial, "F");
   });
 }
-
 ```
