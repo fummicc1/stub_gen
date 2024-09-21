@@ -23,12 +23,12 @@ class FreezedTarget with _$FreezedTarget {
 
 void main() {
   test("target with freezed annotation", () {
-    final target = FreezedTargetStub.stub();
+    final target = FreezedTargetStubBuilder.build();
     expect(target.owner, "stub");
     expect(target.name, "stub");
     expect(target.content, "stub");
 
-    final targetFromJson = FreezedTargetStub.fromJsonStub(
+    final targetFromJson = FreezedTargetStubBuilder.buildWithFromJson(
       json: {
         "owner": "stub",
         "name": "stub",

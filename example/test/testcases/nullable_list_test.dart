@@ -17,10 +17,10 @@ class NullableListTarget {
 
 void main() {
   test("nullable list constructor", () {
-    final target = NullableListTargetStub.stub();
+    final target = NullableListTargetStubBuilder.build();
     expect(
       target.childTarget!.first.childValue,
-      ChildTargetStub.stub().childValue,
+      ChildTargetStubBuilder.build().childValue,
     );
     expect(target.value, 1);
   });

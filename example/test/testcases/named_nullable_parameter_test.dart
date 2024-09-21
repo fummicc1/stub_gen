@@ -20,7 +20,7 @@ class MainClass {
 void main() {
   group('NamedNullableParameterClass', () {
     test('succeed to make a stub', () {
-      final stub = MainClassStub.stub();
+      final stub = MainClassStubBuilder.build();
       expect(stub.customClass?.name, equals('stub'));
     });
   });

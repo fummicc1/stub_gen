@@ -20,7 +20,7 @@ class Target {
 
 void main() {
   test("constructor without named and positioned parameters", () {
-    final target = TargetStub.stub();
+    final target = TargetStubBuilder.build();
     expect(target.boolVariable, false);
     expect(target.doubleVariable, 1.0);
     expect(target.intVariable, 1);

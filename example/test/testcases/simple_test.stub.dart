@@ -1,4 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
+// ignore_for_file: type=lint
 
 part of 'simple_test.dart';
 
@@ -6,8 +7,8 @@ part of 'simple_test.dart';
 // StubGenerator
 // **************************************************************************
 
-extension TargetStub on Target {
-  static Target stub(
+extension TargetStubBuilder on Target {
+  static Target build(
           {int intVariable = 1,
           String stringVariable = "stub",
           double doubleVariable = 1.0,

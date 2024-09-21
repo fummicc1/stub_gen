@@ -29,8 +29,9 @@ class ChildTarget {
 
 void main() {
   test("nested object constructor", () {
-    final target = TargetStub.stub();
-    expect(target.childTarget.childValue, ChildTargetStub.stub().childValue);
+    final target = TargetStubBuilder.build();
+    expect(target.childTarget.childValue,
+        ChildTargetStubBuilder.build().childValue);
     expect(target.value, 100);
   });
 }
