@@ -1,4 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
+// ignore_for_file: type=lint
 
 part of 'enum_test.dart';
 
@@ -6,6 +7,6 @@ part of 'enum_test.dart';
 // StubGenerator
 // **************************************************************************
 
-extension ColorStub on Color {
-  static Color stub() => Color.red;
+extension ColorStubBuilder on Color {
+  static Color build() => Color.red;
 }

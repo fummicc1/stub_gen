@@ -12,7 +12,7 @@ class ObjectWithPrivateConstructor {
 void main() {
   group('ObjectWithPrivateConstructor', () {
     test('succeed to make a stub', () {
-      final stub = ObjectWithPrivateConstructorStub.stub();
+      final stub = ObjectWithPrivateConstructorStubBuilder.build();
       expect(stub.value, equals(1));
     });
   });

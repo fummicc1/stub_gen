@@ -1,4 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
+// ignore_for_file: type=lint
 
 part of 'named_nullable_parameter_test.dart';
 
@@ -6,12 +7,12 @@ part of 'named_nullable_parameter_test.dart';
 // StubGenerator
 // **************************************************************************
 
-extension CustomClassStub on CustomClass {
-  static CustomClass stub({String? name = "stub"}) =>
+extension CustomClassStubBuilder on CustomClass {
+  static CustomClass build({String? name = "stub"}) =>
       CustomClass(name: name ?? "stub");
 }
 
-extension MainClassStub on MainClass {
-  static MainClass stub({CustomClass? customClass}) =>
+extension MainClassStubBuilder on MainClass {
+  static MainClass build({CustomClass? customClass}) =>
       MainClass(customClass: customClass ?? CustomClassStub.stub());
 }

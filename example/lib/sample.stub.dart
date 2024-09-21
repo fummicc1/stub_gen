@@ -1,4 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
+// ignore_for_file: type=lint
 
 part of 'sample.dart';
 
@@ -6,8 +7,8 @@ part of 'sample.dart';
 // StubGenerator
 // **************************************************************************
 
-extension SampleStub on Sample {
-  static Sample stub(
+extension SampleStubBuilder on Sample {
+  static Sample build(
           {String name = "stub",
           int age = 10,
           double height = 1.0,

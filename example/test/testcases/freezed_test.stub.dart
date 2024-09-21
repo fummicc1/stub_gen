@@ -1,4 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
+// ignore_for_file: type=lint
 
 part of 'freezed_test.dart';
 
@@ -6,8 +7,8 @@ part of 'freezed_test.dart';
 // StubGenerator
 // **************************************************************************
 
-extension FreezedTargetStub on FreezedTarget {
-  static FreezedTarget stub(
+extension FreezedTargetStubBuilder on FreezedTarget {
+  static FreezedTarget build(
           {String owner = "stub",
           String name = "stub",
           String content = "stub"}) =>
@@ -16,6 +17,7 @@ extension FreezedTargetStub on FreezedTarget {
           name: name ?? "stub",
           content: content ?? "stub");
 
-  static FreezedTarget fromJsonStub({Map<String, dynamic> json = const {}}) =>
+  static FreezedTarget buildWithFromJson(
+          {Map<String, dynamic> json = const {}}) =>
       FreezedTarget.fromJson(json ?? {});
 }

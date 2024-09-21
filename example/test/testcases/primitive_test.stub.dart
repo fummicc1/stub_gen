@@ -1,4 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
+// ignore_for_file: type=lint
 
 part of 'primitive_test.dart';
 
@@ -6,25 +7,25 @@ part of 'primitive_test.dart';
 // StubGenerator
 // **************************************************************************
 
-extension IntTargetStub on IntTarget {
-  static IntTarget stub({int value = 1234}) => IntTarget(value ?? 1234);
+extension IntTargetStubBuilder on IntTarget {
+  static IntTarget build({int value = 1234}) => IntTarget(value ?? 1234);
 }
 
-extension StringTargetStub on StringTarget {
-  static StringTarget stub({String value = "Hello World"}) =>
+extension StringTargetStubBuilder on StringTarget {
+  static StringTarget build({String value = "Hello World"}) =>
       StringTarget(value ?? "Hello World");
 }
 
-extension DoubleTargetStub on DoubleTarget {
-  static DoubleTarget stub({double value = 1.0}) => DoubleTarget(value ?? 1.0);
+extension DoubleTargetStubBuilder on DoubleTarget {
+  static DoubleTarget build({double value = 1.0}) => DoubleTarget(value ?? 1.0);
 }
 
-extension BoolTargetStub on BoolTarget {
-  static BoolTarget stub({bool value = false}) => BoolTarget(value ?? false);
+extension BoolTargetStubBuilder on BoolTarget {
+  static BoolTarget build({bool value = false}) => BoolTarget(value ?? false);
 }
 
-extension ListTargetStub on ListTarget {
-  static ListTarget stub(
+extension ListTargetStubBuilder on ListTarget {
+  static ListTarget build(
           {List<int> value = const [123456], List<BoolTarget>? boolTargets}) =>
       ListTarget(value ?? [123456], boolTargets ?? [BoolTargetStub.stub()]);
 }

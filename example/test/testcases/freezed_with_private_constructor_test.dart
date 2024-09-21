@@ -19,7 +19,7 @@ class FreezedWithPrivateConstructor with _$FreezedWithPrivateConstructor {
 void main() {
   group('FreezedWithPrivateConstructor', () {
     test('succeed to make a stub', () {
-      final stub = FreezedWithPrivateConstructorStub.stub();
+      final stub = FreezedWithPrivateConstructorStubBuilder.build();
       expect(stub.value, equals(100));
     });
   });

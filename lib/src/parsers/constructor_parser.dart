@@ -29,8 +29,8 @@ class ConstructorParser with Parser {
     final stubFactory =
         constructorName.isEmpty ? className : "$className.$constructorName";
     final stubConstructorName = isPrivate || constructorName.isEmpty
-        ? "stub"
-        : "${constructorName}Stub";
+        ? "build"
+        : "buildWith${constructorName[0].toUpperCase() + constructorName.substring(1)}";
     final renderForArguments = parameters.map(
       (e) => e.parseForArgument(defaultValues: defaultValues),
     );

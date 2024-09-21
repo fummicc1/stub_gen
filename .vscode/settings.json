@@ -12,5 +12,5 @@
     "*.dart": "$(capture).stub.dart, $(capture).g.dart, $(capture).freezed.dart"
   },
   "editor.formatOnSave": true,
-  "dart.flutterSdkPath": ".fvm/versions/3.19.4"
+  "dart.flutterSdkPath": ".fvm/versions/3.22.1"
 }

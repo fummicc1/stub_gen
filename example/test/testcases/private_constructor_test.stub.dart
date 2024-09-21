@@ -1,4 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
+// ignore_for_file: type=lint
 
 part of 'private_constructor_test.dart';
 
@@ -6,7 +7,8 @@ part of 'private_constructor_test.dart';
 // StubGenerator
 // **************************************************************************
 
-extension ObjectWithPrivateConstructorStub on ObjectWithPrivateConstructor {
-  static ObjectWithPrivateConstructor stub({int value = 1}) =>
+extension ObjectWithPrivateConstructorStubBuilder
+    on ObjectWithPrivateConstructor {
+  static ObjectWithPrivateConstructor build({int value = 1}) =>
       ObjectWithPrivateConstructor._(value ?? 1);
 }

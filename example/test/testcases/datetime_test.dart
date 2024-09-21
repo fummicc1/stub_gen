@@ -21,14 +21,14 @@ class NullableDateTimeObject {
 void main() {
   group('DateTime stub', () {
     test('succeed to make a stub', () {
-      final stub = DateTimeObjectStub.stub();
+      final stub = DateTimeObjectStubBuilder.build();
       expect(stub.dateTime, DateTime.parse('2022-01-01T00:00:00Z'));
     });
   });
 
   group('Nullable DateTime stub', () {
     test('succeed to make a stub', () {
-      final stub = NullableDateTimeObjectStub.stub();
+      final stub = NullableDateTimeObjectStubBuilder.build();
       expect(stub.dateTime, DateTime.parse('2024-01-01T10:00:00Z'));
     });
   });

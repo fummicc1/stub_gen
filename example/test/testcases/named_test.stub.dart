@@ -1,4 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
+// ignore_for_file: type=lint
 
 part of 'named_test.dart';
 
@@ -6,7 +7,7 @@ part of 'named_test.dart';
 // StubGenerator
 // **************************************************************************
 
-extension NamedTestStub on NamedTest {
-  static NamedTest stub({String name = "stub"}) =>
+extension NamedTestStubBuilder on NamedTest {
+  static NamedTest build({String name = "stub"}) =>
       NamedTest(name: name ?? "stub");
 }

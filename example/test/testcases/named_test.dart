@@ -12,7 +12,7 @@ class NamedTest {
 
 void main() {
   test("constructor with named parameters", () {
-    final namedTest = NamedTestStub.stub();
+    final namedTest = NamedTestStubBuilder.build();
     expect(namedTest.name, "stub");
   });
 }

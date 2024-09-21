@@ -19,7 +19,7 @@ class ClassRenderer {
       }
     }
     return """
-extension ${className}Stub on $className {
+extension ${className}StubBuilder on $className {
   ${constructorParsers.map((e) => e.parse(defaultValues: defaultValues)).join('\n')}
 }
 """;

@@ -9,7 +9,7 @@ enum Color { red, green, blue }
 void main() {
   group('stub simple enum', () {
     test('succeed to make a stub', () {
-      expect(ColorStub.stub(), Color.red);
+      expect(ColorStubBuilder.build(), Color.red);
     });
   });
 }
