@@ -6,4 +6,8 @@ Builder stubBuilder(BuilderOptions options) => PartBuilder(
       [StubGenerator()],
       ".stub.dart",
       options: options,
+      header: '''
+// coverage:ignore-file
+// ignore_for_file: type=lint
+''',
     );

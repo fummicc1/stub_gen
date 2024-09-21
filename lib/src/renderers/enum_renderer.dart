@@ -14,8 +14,8 @@ class EnumRenderer {
         .map((field) => field.name)
         .toList();
     return '''
-    extension ${name}Stub on $name {
-      static $name stub() => $name.${values.first};
+    extension ${name}StubBuilder on $name {
+      static $name build() => $name.${values.first};
     }
     ''';
   }
