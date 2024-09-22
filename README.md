@@ -48,7 +48,7 @@ class User {
   }
 
   bool get isValidEmail {
-    return email.contains("@some-domain.com");
+    return email.contains("@");
   }
 }
 ```
