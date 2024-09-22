@@ -7,11 +7,11 @@ part of 'sample.dart';
 // StubGenerator
 // **************************************************************************
 
-extension SampleStubBuilder on Sample {
-  static Sample build(
+extension UserStubBuilder on User {
+  static User build(
           {String name = "stub",
           int age = 10,
           double height = 1.0,
-          bool isMale = false}) =>
-      Sample(name ?? "stub", age ?? 10, height ?? 1.0, isMale ?? false);
+          String email = "beahan-madie@sauer.co.uk"}) =>
+      User(name ?? "stub", age ?? 10, height ?? 1.0, email ?? "stub");
 }
