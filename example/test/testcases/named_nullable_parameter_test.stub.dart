@@ -14,5 +14,5 @@ extension CustomClassStubBuilder on CustomClass {
 
 extension MainClassStubBuilder on MainClass {
   static MainClass build({CustomClass? customClass}) =>
-      MainClass(customClass: customClass ?? CustomClassStub.stub());
+      MainClass(customClass: customClass ?? CustomClassStubBuilder.build());
 }

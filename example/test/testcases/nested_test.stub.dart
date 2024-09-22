@@ -9,7 +9,7 @@ part of 'nested_test.dart';
 
 extension TargetStubBuilder on Target {
   static Target build({int value = 100, ChildTarget? childTarget}) =>
-      Target(value ?? 100, childTarget ?? ChildTargetStub.stub());
+      Target(value ?? 100, childTarget ?? ChildTargetStubBuilder.build());
 }
 
 extension ChildTargetStubBuilder on ChildTarget {
