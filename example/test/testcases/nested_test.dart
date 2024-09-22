@@ -30,8 +30,10 @@ class ChildTarget {
 void main() {
   test("nested object constructor", () {
     final target = TargetStubBuilder.build();
-    expect(target.childTarget.childValue,
-        ChildTargetStubBuilder.build().childValue);
+    expect(
+      target.childTarget.childValue,
+      ChildTargetStubBuilder.build().childValue,
+    );
     expect(target.value, 100);
   });
 }

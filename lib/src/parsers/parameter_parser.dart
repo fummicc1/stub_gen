@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
+import 'package:faker/faker.dart';
 import 'package:stub_gen/src/default_values.dart';
 import 'package:stub_gen/src/parsers/parser.dart';
 import 'package:stub_gen/src/parsers/types/expression_type.dart';
@@ -77,6 +78,7 @@ ParameterParseResult traverseDefaultValueFromDartType({
 
 class ParameterParser with Parser {
   final ParameterElement element;
+  static final faker = Faker();
 
   ParameterParser(this.element);
 
@@ -94,7 +96,6 @@ class ParameterParser with Parser {
     var value = name;
 
     final resultUsedInArgument = parseForArgument(defaultValues: defaultValues);
-
     if (resultUsedInArgument.isNotEmpty) {
       if (defaultValue != null) {
         value += " ?? $defaultValue";
@@ -120,6 +121,10 @@ class ParameterParser with Parser {
       defaultValues: defaultValues,
     );
     final defaultValue = result.defaultValue;
+    final valueFromFakerAnnotation = element.valueFromFakerAnnotation;
+    if (valueFromFakerAnnotation != null) {
+      return '$type $name = $valueFromFakerAnnotation';
+    }
     if (defaultValue != null) {
       if (result.expressionType == ExpressionType.constExpression) {
         final String valuePrefix;
@@ -132,6 +137,7 @@ class ParameterParser with Parser {
       }
     }
     if (type.isNullable) {
+      // if type is already nullable, do not need to add ? mark.
       return "$type $name";
     }
     return "$type? $name";
@@ -148,5 +154,25 @@ extension DartTypeExtension on DartType {
 
   bool get isNullable {
     return toString().endsWith("?");
+  }
+}
+
+extension on ParameterElement {
+  bool hasEmailAddressAnnotation() {
+    return metadata.any((e) => e.element?.displayName == "EmailAddress");
+  }
+
+  bool hasPhoneNumberAnnotation() {
+    return metadata.any((e) => e.element?.displayName == "PhoneNumber");
+  }
+
+  String? get valueFromFakerAnnotation {
+    if (hasEmailAddressAnnotation()) {
+      return '"${faker.internet.email()}"';
+    }
+    if (hasPhoneNumberAnnotation()) {
+      return '"${faker.phoneNumber.ja()}"';
+    }
+    return null;
   }
 }

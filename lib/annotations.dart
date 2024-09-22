@@ -7,3 +7,11 @@ class StubGen {
     this.defaultValues = const {},
   });
 }
+
+class EmailAddress {
+  const EmailAddress();
+}
+
+class PhoneNumber {
+  const PhoneNumber();
+}
