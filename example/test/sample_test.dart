@@ -2,9 +2,9 @@ import 'package:example/sample.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test("make_sample_stub", () {
-    final sample = SampleStubBuilder.build(name: 'fummicc1');
-    expect(sample.name, "fummicc1");
-    expect(sample.initial, "F");
+  test("Initial should be capitalized and email should be valid", () {
+    final user = UserStubBuilder.build(name: 'fummicc1');
+    expect(user.initial, "F");
+    expect(user.isValidEmail, isTrue);
   });
 }
