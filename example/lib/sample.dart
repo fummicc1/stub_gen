@@ -4,20 +4,24 @@ import 'package:stub_gen/stubbables.dart';
 part 'sample.stub.dart';
 
 @StubGen(defaultValues: {StubbableTypes.int: 10})
-class Sample {
+class User {
   final String name;
   final int age;
   final double height;
-  final bool isMale;
+  final String email;
 
-  const Sample(
+  const User(
     this.name,
     this.age,
     this.height,
-    this.isMale,
+    @EmailAddress() this.email,
   );
 
   String get initial {
     return name[0].toUpperCase();
+  }
+
+  bool get isValidEmail {
+    return email.contains("@some-domain.com");
   }
 }
