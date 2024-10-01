@@ -9,8 +9,8 @@ part of 'faker_test.dart';
 
 extension FakeModelStubBuilder on FakeModel {
   static FakeModel build(
-          {String? email = "pattie-kling@kihn.co.uk",
-          String phoneNumber = "+810124138300",
+          {String? email = "leannon.aubrey@klein.com",
+          String phoneNumber = "(051) 2507-4100",
           String name = "stub"}) =>
       FakeModel(
           email: email ?? "stub",
