@@ -17,7 +17,7 @@ Add the following to your `pubspec.yaml`:
 stub_gen:
   git:
     url: https://github.com/fummicc1/stub_gen
-    ref: 0.0.5
+    ref: 0.0.6
 ```
 
 ## Usage
