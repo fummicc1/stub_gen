@@ -41,6 +41,12 @@ class ConstructorParser with Parser {
         renderForFactory.length != parameters.length) {
       return "";
     }
+    // if there is no parameter, use default constructor.
+    if (renderForArguments.isEmpty) {
+      return """
+  static $className $stubConstructorName() => $stubFactory();
+""";
+    }
     return """
   static $className $stubConstructorName({
     ${renderForArguments.join(',\n')}
