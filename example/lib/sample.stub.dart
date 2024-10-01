@@ -12,6 +12,6 @@ extension UserStubBuilder on User {
           {String name = "stub",
           int age = 10,
           double height = 1.0,
-          String email = "beahan-madie@sauer.co.uk"}) =>
+          String email = "paucek_paris@collins.us"}) =>
       User(name ?? "stub", age ?? 10, height ?? 1.0, email ?? "stub");
 }
