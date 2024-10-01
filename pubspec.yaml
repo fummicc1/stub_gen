@@ -1,6 +1,6 @@
 name: stub_gen
 description: a Dart package that generates stubs
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/fummicc1/stub_gen
 
 environment:
