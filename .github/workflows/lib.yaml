@@ -1,0 +1,25 @@
+name: Example CI
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+concurrency:
+    group: lib-ci-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: dart-lang/setup-dart@v1
+              with:
+                  sdk: 3.9.2
+            - run: dart pub get
+            - run: dart format --output=none --set-exit-if-changed .
+            - run: dart analyze
+            - run: dart test
