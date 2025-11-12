@@ -11,26 +11,27 @@ class ConstructorParser with Parser {
 
   @override
   String parse({required DefaultValues defaultValues}) {
-    final isFreezed = classElement.metadata.any(
+    final isFreezed = classElement.metadata.annotations.any(
       (e) => e.toSource().contains("freezed"),
     );
     final className = classElement.name;
     final constructorName = constructorElement.name;
-    final isPrivate = constructorName.startsWith("_");
+    final isPrivate = constructorName?.startsWith("_") == true;
     // as for freezed, there is no way to create a stub for private constructor.
     // developer uses private constructor for freezed to declare getter field for the class.
     if (isFreezed && isPrivate) {
       return "";
     }
     final parameters = <ParameterParser>[];
-    for (final parameter in constructorElement.parameters) {
+    for (final parameter in constructorElement.formalParameters) {
       parameters.add(ParameterParser(parameter));
     }
-    final stubFactory =
-        constructorName.isEmpty ? className : "$className.$constructorName";
-    final stubConstructorName = isPrivate || constructorName.isEmpty
+    final stubFactory = constructorName?.isEmpty == true
+        ? className
+        : "$className.$constructorName";
+    final stubConstructorName = isPrivate || constructorName?.isEmpty == true
         ? "build"
-        : "buildWith${constructorName[0].toUpperCase() + constructorName.substring(1)}";
+        : "buildWith${constructorName![0].toUpperCase() + constructorName.substring(1)}";
     final renderForArguments = parameters.map(
       (e) => e.parseForArgument(defaultValues: defaultValues),
     );
