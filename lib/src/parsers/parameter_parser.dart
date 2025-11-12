@@ -77,7 +77,7 @@ ParameterParseResult traverseDefaultValueFromDartType({
 }
 
 class ParameterParser with Parser {
-  final ParameterElement element;
+  final FormalParameterElement element;
   static final faker = Faker();
 
   ParameterParser(this.element);
@@ -93,15 +93,23 @@ class ParameterParser with Parser {
     );
     final defaultValue = result.defaultValue;
     final nullCoalescingValue = result.nullCoalescingValue;
-    var value = name;
+    var value = name ?? '';
 
     final resultUsedInArgument = parseForArgument(defaultValues: defaultValues);
     if (resultUsedInArgument.isNotEmpty) {
       if (defaultValue != null) {
-        value += " ?? $defaultValue";
+        if (value.isEmpty) {
+          value = defaultValue;
+        } else {
+          value += " ?? $defaultValue";
+        }
       }
       if (result.shouldCoalesceNull) {
-        value += " ?? $nullCoalescingValue";
+        if (value.isEmpty) {
+          value = nullCoalescingValue!;
+        } else {
+          value += " ?? $nullCoalescingValue";
+        }
       }
     }
 
@@ -157,13 +165,15 @@ extension DartTypeExtension on DartType {
   }
 }
 
-extension on ParameterElement {
+extension on FormalParameterElement {
   bool hasEmailAddressAnnotation() {
-    return metadata.any((e) => e.element?.displayName == "EmailAddress");
+    return metadata.annotations
+        .any((e) => e.element?.displayName == "EmailAddress");
   }
 
   bool hasPhoneNumberAnnotation() {
-    return metadata.any((e) => e.element?.displayName == "PhoneNumber");
+    return metadata.annotations
+        .any((e) => e.element?.displayName == "PhoneNumber");
   }
 
   String? get valueFromFakerAnnotation {
